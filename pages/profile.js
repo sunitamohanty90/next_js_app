@@ -139,7 +139,7 @@ export default function Profile() {
                                     <Link  href=""><a className='text-white hover:bg-white hover:text-black px-1 rounded-xl text-center'>More</a></Link>
                                 </ul>
                             </div>
-                {/* cut element */}
+                cut element
                 <div className="flex justify-center contents-center ">
                            
                         <div className="float-root mt-16">
