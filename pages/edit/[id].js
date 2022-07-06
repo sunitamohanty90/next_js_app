@@ -2,7 +2,7 @@ import Link from "next/link"
 import React, { useState } from "react";
 import {useRouter} from "next/router";
 import axios from 'axios'
-import { useParams } from 'react-router-dom';
+
 
 
 

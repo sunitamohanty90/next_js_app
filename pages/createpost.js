@@ -34,13 +34,7 @@ const Addpost = () => {
             data.append("image",image);
             
         console.log(title);
-            // if (event.target.files && event.target.files[0]) {
-            //   const i = event.target.files[0];
-        
-            //   setImage(i);
-            //   console.log(i);
-             
-            // }
+            
             await axios.post('http://localhost/api/createpost',data,
     
                  {

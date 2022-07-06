@@ -25,18 +25,7 @@ export default function Home() {
         router.push("/");
     };
 
-    // const viewProfile = async () => {
-        
-    //     await axios.post("http://localhost/api/logout",{
-    //         headers: {
-    //             Authorization: 'Bearer' + ' ' + localStorage.getItem('token')
-    //             }
-    //     });
-        
-        
-    //     localStorage.clear();
-    //     router.push("/");
-    // };
+    
     
         const [posts, setPosts] = useState([]);
       
@@ -102,10 +91,15 @@ export default function Home() {
             
             <div className='float-left w-40 md:w-96'>
             <div className="cat ">
-                
-                  <Link href={{pathname: '/view/[id]',
-                        query: { id: post.user_id },}}><span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span></Link> 
-                   
+                {post.email===localStorage.getItem('user')
+                 ?<Link href={{pathname: '/profile',
+                        query: { id: post.user_id },}}>
+                            <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
+                </Link> 
+                   :<Link href={{pathname: '/view/[id]',
+                        query: { id: post.user_id },}}>
+                            <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
+                </Link> }
                   <span className="text-white text-sm ">{post.updated_at}</span>
                </div>
               

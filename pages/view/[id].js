@@ -50,65 +50,95 @@ export default function ViewProfile() {
         const orig = 'http://localhost/images/'
  
         return(
-<section >
-<div className="">
-<div className="float-root bg-gray-300">
-<div className="float-right ">
-<h1>Posts</h1>
-<div>
+<div className=""
+style={{
+  backgroundImage: `url('/images/post.jpg')`,
+  
+  }}
+>
+<div className="flex justify-center items-center">
+<div className="float-root">
+<div className=" space-x-20 float-right">
+                                  <h1 className=" text-blue-400 text-3xl font-weight-800 text-center">Posts</h1>
+                                 
             { posts.map((post) => (
-                <div > 
-       <div className="flex ">
-          
-          <div className="bg-white box-border p-4 border-8  flex flex-col p-4 rounded-xl text-center w-96 h-96 " >
-                 <div> 
-                       <span className="text-gray-500 text-sm ">
-                          <span className="font-bold italic text-gray-800">{post.email}</span>,{post.updated_at}</span>
-                      <h2 className="text-xl ">{post.title}</h2> 
-                 </div>
-                 <div className="flex justify-center contents-center"> 
-                      <img className="w-72 h-52" src={orig + post.image_path}/>
-                 </div>
-                 <p className="text-md text-gray-700 pt-2 pb-2 font-light">{post.text}</p>
-
-           </div>
-          
-       </div>
-       </div>
-                ))}  
-
-</div>
-</div>
-
-<div className="float-left ">
-<h2 className="">Profile</h2>
-<div>
-            { profiles.map((profile) => (
-                <div > 
-                       <div className="flex flex-col space-y-4 ">
-                                                   <h1>work:</h1>
-                                                   <h2 className="text-blue-500">{profile.work}</h2>
-                                                   <h1>Study:</h1>
-                                                   <h2 className="text-blue-500">{profile.study}</h2>
-                                                   <h1>college:</h1>
-                                                   <h2 className="text-blue-500">{profile.college}</h2>
-                                                   <h1>currentlocation:</h1>
-                                                   <h2 className="text-blue-500">{profile.currentlocation}</h2>
-                                                   <h1>permanentlocation:</h1>
-                                                   <h2 className="text-blue-500">{profile.permanentlocation}</h2>
-                                                   <h1>joined at:</h1>
-                                                   <h2 className="text-blue-500">{profile.join}</h2>
+     
+                   <div key={post.id} className="" >
+                      <section className="py-4 ">
+                               <div className="container mx-auto md:px-20">
+                                   
+                               {/* slide function */}
+                               <div className="flex justify-center contents-center ">
+                                <div className='w-96'>
+                                  <div className="info flex justify-center flex-col">
+                                   <div className="cat">
+                                      <h3 className="text-orange-600 hover:text-orange-800 text-xl">{post.email} ,</h3>
+                                      <span className="text-white ">{post.updated_at}</span>
+                                   </div>
+                                    <div className="title">
+                                      <h2 className="text-3xl md:text-3xl font-bold text-white">{post.title}</h2>
+                                     </div>
+                                    <div className="image flex justify-center contents-center">
+                                   <img src={orig + post.image_path} className="w-96 h-96  rounded-l-2xl bg-white"/>
+                           
+                                     </div>
+                                      <div><p className="text-white py-3 ">{post.text}</p></div>  
+                               </div>
+                                        
                                                    
-                                                  
-                                                </div>
-      
-       </div>
-                ))}   
+                           </div>        
+                   
+                           </div>
+                   
+                   
+                               </div>
+                       </section>
+                       </div>
+             ))}
+                 
+                            </div>
+
+              <div className="float-left ">
+              <h1 className=" text-blue-400 text-3xl font-weight-800 text-center">About</h1>
+              <div>
+                          { profiles.map((profile) => (
+                              <div > 
+                                     <div className="flex flex-col space-y-4 bg-white rounded-xl mt-10 ">                       <div className="">
+                                                                <div className="child"><img className="" src="/images/work4.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.work}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/study1.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.study}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/college.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.college}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/location.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.currentlocation}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/location.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.permanentlocation}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/join.svg" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.join}</div>
+                                                              </div>
+                                                                 
+                                                                 
+                                                                
+                                                              </div>
+                    
+                     </div>
+                              ))}   
+              </div>
+              </div>
 </div>
 </div>
 </div>
-</div>
-</section>
 
 
         )

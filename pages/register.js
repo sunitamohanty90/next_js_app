@@ -18,20 +18,7 @@ const Register = () => {
     const submit =async event => {
         event.preventDefault()
 
-        // await fetch ('http://localhost/api/register',{
-        //     body: JSON.stringify({
-        //         firstname,
-        //         lastname,
-        //         email,
-        //         birthday,
-        //         gender,
-        //         password
-        //       }),
-        //       headers: {
-        //         'Content-Type': 'application/json',
-        //       },
-        //       method: 'POST',
-        // })
+        
         await axios.post('http://localhost/api/register',
         {
             firstname,lastname, email,birthday,gender,password

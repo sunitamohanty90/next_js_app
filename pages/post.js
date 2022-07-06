@@ -54,27 +54,7 @@ export default function Post() {
       backgroundImage: `url('/images/post.jpg')`,
        
       }}>
-   {/* <header className="">
-            <div className="xl:container xl:mx:auto flex flex-col items-center sm:flex-row sm:justify-between text-center py-3">
-                
-                <div className="shrink w-80 sm:order-2">
-                    <Link href={"/home"}>
-                    <a className='text-white hover:bg-white hover:text-black px-1 rounded-xl text-center'>Home</a>
-                    </Link>
-                    
-                </div>
-                <div className="w-96 order-3 flex justify-center">
-                    <div className="flex gap-6">
-                       <Link href={"/post"}><a className='text-white hover:bg-white hover:text-black px-1 rounded-xl text-center'>Post</a></Link>
-                         <Link href={"/profile"}><a className='text-white hover:bg-white hover:text-black px-1 rounded-xl text-center'>Profile</a></Link>
-                         
-                         <Link href='/createpost' className=''><a className='text-white hover:bg-white hover:text-black px-1 rounded-xl text-center' >Createpost</a></Link>
-                       
-                    </div>
-                </div>
-
-            </div>
-        </header> */}
+   
 
 <header className="text-white">
             <div className="xl:container xl:mx:auto flex flex-col items-center sm:flex-row sm:justify-between text-center py-3">
@@ -116,7 +96,16 @@ export default function Post() {
                          <div className='w-96'>
                            <div className="info flex justify-center flex-col">
                             <div className="cat">
-                               <h3 className="text-orange-600 hover:text-orange-800 text-xl">{localStorage.getItem('user')} ,</h3>
+                               {post.email===localStorage.getItem('user')
+                                   ?<Link href={{pathname: '/profile',
+                                          query: { id: post.user_id },}}>
+                                              <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
+                                   </Link> 
+                                      :<Link href={{pathname: '/view/[id]',
+                                           query: { id: post.user_id },}}>
+                                               <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
+                                   </Link> }
+                               {/* <h3 className="text-orange-600 hover:text-orange-800 text-xl">{localStorage.getItem('user')} ,</h3> */}
                                <span className="text-white ">{post.updated_at}</span>
                             </div>
                              <div className="title">

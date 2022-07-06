@@ -119,20 +119,16 @@ export default function Profile() {
                 </div>
                 <div className="flex justify-center contents-center mt-4">
                
-                                <h1 className="text-3xl px-2 py-2 text-white">{localStorage.getItem('user')}</h1>  
+                                <h1 className="text-3xl px-2 py-2 text-orange-600 hover:text-orange-800">{localStorage.getItem('user')}</h1>  
                
                  </div>
                  <div className="text-white flex justify-center contents-center mt-12 ">
                                 <ul className="flex flex-row space-x-8 ">
                                     <Link  href="/profile"><a className='text-blue '>Posts</a></Link>
-                                    <div className="dropdown flex">
+                                    
                                         <button className="dropbtn">About</button>
-                                                     <div className="dropdown-content ">
-                                                       <Link className="" href="/createabout">create</Link>
-                                                       {/* <a  className="text-blue-500 hover:text-black">Delete</a> */}
-                                                       
-                                                     </div>
-                                    </div>
+                                                     
+                                    
                                     <Link  href=""><a className='text-white hover:bg-white hover:text-black px-1 rounded-xl text-center'>Frnds</a></Link>
                                     <Link  href=""><a className='text-white hover:bg-white hover:text-black px-1 rounded-xl text-center'>Photos</a></Link>
                                     <Link  href=""><a className='text-white hover:bg-white hover:text-black px-1 rounded-xl text-center'>videos</a></Link>
@@ -143,69 +139,109 @@ export default function Profile() {
                 <div className="flex justify-center contents-center ">
                            
                         <div className="float-root mt-16">
-                            <div className=" space-x-8 float-right">
+                            <div className=" space-x-20 float-right">
                                   <h1 className=" text-blue-600 text-3xl font-weight-800 text-center">Posts</h1>
-                                  { posts.map((post) => (
-                                         <div> 
-                                <div className="flex ">
+                                 
+            { posts.map((post) => (
+     
+                   <div key={post.id} className="" >
+                      <section className="py-4 ">
+                               <div className="container mx-auto md:px-20">
                                    
-                                   <div className="bg-white box-border p-4 border-8  flex flex-col p-4 rounded-xl text-center w-96 h-96 " >
-                                          <div> 
-                                                <span className="text-gray-500 text-sm ">
-                                                   <span className="font-bold italic text-gray-800">{localStorage.getItem('user')}</span>,{post.updated_at}</span>
-                                               <h2 className="text-xl ">{post.title}</h2> 
-                                          </div>
-                                          <div className="flex justify-center contents-center"> 
-                                               <img className="w-72 h-52" src={orig + post.image_path}/>
-                                          </div>
-                                          <p className="text-md text-gray-700 pt-2 pb-2 font-light">{post.text}</p>
-                     
-                                           <div className="dropdown flex content-end">
-                                                     <button className="dropbtn text-blue-500 hover:text-black">...</button>
-                                                     <div className="dropdown-content ">
-                                                     <Link href={{pathname: '/edit/[id]',
-                                                           query: { id: post.id },}}><a className="text-blue-500 hover:text-black">Edit</a></Link>
-                                                       <button onClick={() => handleDelete(post.id)} ><a className="text-blue-500 hover:text-black">Delete</a></button>
-                                                       
-                                                     </div>
-                                            </div>
-                       
-                                    </div>
-                                   
-                                </div>
-                                </div>
-                                         ))}     
+                               {/* slide function */}
+                               <div className="flex justify-center contents-center ">
+                                <div className='w-96'>
+                                  <div className="info flex justify-center flex-col">
+                                   <div className="cat">
+                                       {post.email===localStorage.getItem('user')
+                                          ?<Link href={{pathname: '/profile',
+                                                 query: { id: post.user_id },}}>
+                                                     <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
+                                            </Link> 
+                                           :<Link href={{pathname: '/view/[id]',
+                                                    query: { id: post.user_id },}}>
+                                                        <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
+                                            </Link> }
+                                      {/* <h3 className="text-orange-600 hover:text-orange-800 text-xl">{localStorage.getItem('user')} ,</h3> */}
+                                      <span className="text-white ">{post.updated_at}</span>
+                                   </div>
+                                    <div className="title">
+                                      <h2 className="text-3xl md:text-3xl font-bold text-white">{post.title}</h2>
+                                     </div>
+                                    <div className="image flex justify-center contents-center">
+                                   <img src={orig + post.image_path} className="w-96 h-96  rounded-l-2xl bg-white"/>
+                           
+                                     </div>
+                                      <div><p className="text-white py-3 ">{post.text}</p></div>  
+                               </div>
+                                        
+                                                   <div className="dropdown   ">
+                                                            <button className="dropbtn  absolute inset-x-0 bottom-0 ">...</button>
+                                                            <div className="dropdown-content absolute inset-x-0 bottom-0">
+                                                             
+                                                             <Link href={{pathname: '/edit/[id]',
+                                                                  query: { id: post.id },}}><a className="text-blue-500 hover:text-black ">Edit</a></Link>
+                                                              
+                                                              
+                                                             
+                                                            <button onClick={() => handleDelete(post.id)} ><a className="text-blue-500 hover:text-black ">Delete</a></button>
+                                                              
+                                                            </div>
+                                                   </div>
+                           </div>        
+                   
+                           </div>
+                   
+                   
+                               </div>
+                       </section>
+                       </div>
+             ))}
                  
                             </div>
-                            <div className="float-left mt-9">
-               
-                                   <div className="bg-white box-border h-96 w-96 p-4 border-8">
+                            <div className="float-left ">
+                                 <h1 className=" text-blue-600 text-3xl font-weight-800 text-center">About</h1>
+                                   <div className="bg-white   w-96 p-2 rounded-xl mt-8">
                                           <div>
                                               <h1 className="text-center text-blue-700">Intro</h1>
                                           </div>
                                           { profiles.map((profile) => (
                                          <div> 
-                                               <div className="flex flex-col space-y-4 ">
-                                                   <h2>{profile.work}</h2>
-                                                   <h2>{profile.study}</h2>
-                                                   <h2>{profile.college}</h2>
-                                                   <h2>{profile.currentlocation}</h2>
-                                                   <h2>{profile.permanentlocation}</h2>
-                                                   <h2>{profile.join}</h2>
+                                               <div className="flex flex-col  ">
+                                                   
+                                                   <div className="">
+                                                                <div className="child"><img className="" src="/images/work4.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.work}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/study1.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.study}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/college.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.college}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/location.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.currentlocation}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/location.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.permanentlocation}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/join.svg" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.join}</div>
+                                                              </div>
                                                    <Link href={{pathname: '/editprofile/[id]',
                                                            query: { id: profile.id },}}><a className="bg-blue-500 hover:bg-blue-700 text-white my-2 py-2 rounded-xl text-sm text-center">Edit Details</a></Link>
-                                                   <button onClick={() => handleDeleteprofile(profile.id)} className="" ><a className="bg-blue-500 hover:bg-blue-700 text-white my-2 py-2 rounded-xl text-sm text-center ">Delete Details</a></button>
+                                                   
                                                 </div>
                                                 </div>
                                          ))}
                                     </div>
                  
-                                    {/* <div className="bg-white box-border h-72 w-96 p-4 border-8">
-                                        <div>Photos</div>
-                                    </div>
-                                    <div className="bg-white box-border h-72 w-96 p-4 border-8">
-                                        <div>Frnds</div>
-                                    </div> */}
+                                    
                              </div>
                         </div>
                     </div>
