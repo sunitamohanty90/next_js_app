@@ -76,12 +76,12 @@ export default function Home() {
             </div>
         </header>
         {/* <h1 className="font-bold text-3xl pb-12 text-center">Posts</h1> */}
-        <section className=" mt-16">
+        <section className=" mt-16 flex flex-col-reverse">
         { posts.map((post) => (
             <div key={post.id}>
                  
         {/* section */}
-       <div className='py-8'>
+       <div className='py-8 '>
             <div className="container mx-auto md:px-20 ">
                 
            
