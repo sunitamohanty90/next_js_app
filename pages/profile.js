@@ -86,14 +86,14 @@ export default function Profile() {
         backgroundImage: `url('/images/pureblack.jpeg')`,
          
         }}>
-        <section className="">
+        <section >
             
         <header className="text-white">
             <div className="xl:container xl:mx:auto flex flex-col items-center sm:flex-row sm:justify-between text-center py-3">
                 <div className="md:flex-none w-96 order-2 sm:order-1 flex justify-center py-4 sm:py-0">
                     <h1 className=" italic text-3xl ">INNOVATION</h1>
                 </div>
-                <div className="shrink w- sm:order-1">
+                <div className="shrink  sm:order-1">
                 <Link href={"/profile"}><a>Profile</a></Link>
                     
                 </div>
@@ -117,13 +117,13 @@ export default function Profile() {
                <div className="image flex justify-center contents-center">
                    <img className="rounded-full mt-12" src={"/images/girl.jpeg"}width={500}height={500}/>
                 </div>
-                <div className="flex justify-center contents-center mt-4">
+                <div className="flex justify-center contents-center mt-4 ">
                
-                                <h1 className="text-3xl px-2 py-2 text-orange-600 hover:text-orange-800">{localStorage.getItem('user')}</h1>  
+                                <h1 className="md:text-3xl sm:text-sm text-orange-600 hover:text-orange-800">{localStorage.getItem('user')}</h1>  
                
                  </div>
-                 <div className="text-white flex justify-center contents-center mt-12 ">
-                                <ul className="flex flex-row space-x-8 ">
+                 <div className="text-white flex justify-center contents-center mt-12  ">
+                                <ul className="flex flex-row md:space-x-8 space-x-2">
                                     <Link  href="/profile"><a className='text-blue '>Posts</a></Link>
                                     
                                         <button className="dropbtn">About</button>
@@ -136,72 +136,72 @@ export default function Profile() {
                                 </ul>
                             </div>
                 
-                <div className="flex justify-center contents-center ">
+                 <div className="md:flex justify-center contents-center ">
                            
-                        <div className="float-root mt-16">
-                            <div className=" space-x-20 float-right">
+                        <div className="md:float-root mt-16">
+                            <div className=" md:space-x-20  md:float-right">
                                   <h1 className=" text-blue-600 text-3xl font-weight-800 text-center">Posts</h1>
                                  
-            { posts.map((post) => (
+                                  { posts.map((post) => (
      
-                   <div key={post.id} className="" >
-                      <section className="py-4 ">
-                               <div className="container mx-auto md:px-20">
-                                   
-                               {/* slide function */}
-                               <div className="flex justify-center contents-center ">
-                                <div className='w-96'>
-                                  <div className="info flex justify-center flex-col">
-                                   <div className="cat">
-                                       {post.email===localStorage.getItem('user')
-                                          ?<Link href={{pathname: '/profile',
-                                                 query: { id: post.user_id },}}>
-                                                     <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
-                                            </Link> 
-                                           :<Link href={{pathname: '/view/[id]',
-                                                    query: { id: post.user_id },}}>
-                                                        <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
-                                            </Link> }
-                                      {/* <h3 className="text-orange-600 hover:text-orange-800 text-xl">{localStorage.getItem('user')} ,</h3> */}
-                                      <span className="text-white ">{post.updated_at}</span>
-                                   </div>
-                                    <div className="title">
-                                      <h2 className="text-3xl md:text-3xl font-bold text-white">{post.title}</h2>
-                                     </div>
-                                    <div className="image flex justify-center contents-center">
-                                   <img src={orig + post.image_path} className="w-96 h-96  rounded-l-2xl bg-white"/>
-                           
-                                     </div>
-                                      <div><p className="text-white py-3 ">{post.text}</p></div>  
-                               </div>
-                                        
-                                                   <div className="dropdown   ">
-                                                            <button className="dropbtn  absolute inset-x-0 bottom-0 ">...</button>
-                                                            <div className="dropdown-content absolute inset-x-0 bottom-0">
-                                                             
-                                                             <Link href={{pathname: '/edit/[id]',
-                                                                  query: { id: post.id },}}><a className="text-blue-500 hover:text-black ">Edit</a></Link>
-                                                              
-                                                              
-                                                             
-                                                            <button onClick={() => handleDelete(post.id)} ><a className="text-blue-500 hover:text-black ">Delete</a></button>
-                                                              
-                                                            </div>
-                                                   </div>
-                           </div>        
-                   
-                           </div>
-                   
-                   
-                               </div>
-                       </section>
+     <div key={post.id} className="" >
+        <section className="py-4  p-4">
+                 <div className="container mx-auto md:px-20">
+                     
+                 
+                 <div className="flex justify-center contents-center p-2">
+                  <div className='w-96'>
+                    <div className="info flex justify-center flex-col">
+                     <div className="cat">
+                        {post.email===localStorage.getItem('user')
+                            ?<Link href={{pathname: '/profile',
+                                   query: { id: post.user_id },}}>
+                                       <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
+                            </Link> 
+                               :<Link href={{pathname: '/view/[id]',
+                                    query: { id: post.user_id },}}>
+                                        <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
+                            </Link> }
+                        
+                        <span className="text-white ">{post.updated_at}</span>
+                     </div>
+                      <div className="title">
+                        <h2 className="text-3xl md:text-3xl font-bold text-white">{post.title}</h2>
                        </div>
-             ))}
+                      <div className="image flex justify-center contents-center">
+                     <img src={orig + post.image_path} className="w-96 h-96  rounded-l-2xl bg-white"/>
+             
+                       </div>
+                        <div><p className="text-white py-3 ">{post.text}</p></div>  
+                 </div>
+                          
+                                     <div className="dropdown   ">
+                                              <button className="dropbtn  absolute inset-x-0 bottom-0 ">...</button>
+                                              <div className="dropdown-content absolute inset-x-0 bottom-0">
+                                               
+                                               <Link href={{pathname: '/edit/[id]',
+                                                    query: { id: post.id },}}><a className="text-blue-500 hover:text-black ">Edit</a></Link>
+                                                
+                                                
+                                               
+                                              <button onClick={() => handleDelete(post.id)} ><a className="text-blue-500 hover:text-black ">Delete</a></button>
+                                                
+                                              </div>
+                                     </div>
+             </div>        
+     
+             </div>
+     
+     
+                 </div>
+         </section>
+         </div>
+ ))}       
                  
                             </div>
-                            <div className="float-left ">
+                            <div className="md:float-left p-4">
                                  <h1 className=" text-blue-600 text-3xl font-weight-800 text-center">About</h1>
-                                   <div className="bg-white   w-96 p-2 rounded-xl mt-8">
+                                   <div className="bg-white md:w-96  p-2 rounded-xl mt-8">
                                           <div>
                                               <h1 className="text-center text-blue-700">Intro</h1>
                                           </div>
@@ -246,7 +246,7 @@ export default function Profile() {
                         </div>
                     </div>
 
-            </div>
+            </div> 
         </section>
     </div> 
       

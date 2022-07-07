@@ -75,21 +75,22 @@ export default function Home() {
 
             </div>
         </header>
-        <h1 className="font-bold text-3xl pb-12 text-center">Posts</h1>
+        {/* <h1 className="font-bold text-3xl pb-12 text-center">Posts</h1> */}
+        <section className=" mt-16">
         { posts.map((post) => (
             <div key={post.id}>
                  
         {/* section */}
-        <section className="py-8 ">
+       <div className='py-8'>
             <div className="container mx-auto md:px-20 ">
                 
-            {/* slide function */}
+           
             <div className="flex justify-center contents-center ">
             
             <div className="info flex justify-center flex-col">
-              <div className='float-root flex space-x-2 md:space-x-10'>
+              <div className='md:float-root  md:space-x-10'>
             
-            <div className='float-left w-40 md:w-96'>
+            <div className='md:float-left flex-col  md:w-96 p-2'>
             <div className="cat ">
                 {post.email===localStorage.getItem('user')
                  ?<Link href={{pathname: '/profile',
@@ -109,8 +110,8 @@ export default function Home() {
                  
                <p className="text-white py-3">{post.text}</p>
                </div>
-               <div className="float-right image md:w-96 w-40 ">
-                <img src={orig + post.image_path} className="w-96 h-96  rounded-l-2xl bg-white"/>
+               <div className="md:float-right image md:w-96 ">
+                <img src={orig + post.image_path} className="md:w-96 md:h-96 h-96 md:p-0 p-2 rounded-l-2xl "/>
            
             </div>
                </div>
@@ -121,9 +122,10 @@ export default function Home() {
 
 
             </div>
-        </section>
+    </div>
         </div>
         ))}
+         </section>
     </div>
   )
 

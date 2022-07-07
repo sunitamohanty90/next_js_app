@@ -88,7 +88,7 @@ export default function Post() {
      
             <div key={post.id} className="" >
        {/* {localStorage.setItem('postid',post.id)} */}
-               <section className="py-4 mt-20">
+               <section className="py-4 mt-20 p-4">
                         <div className="container mx-auto md:px-20">
                             
                         {/* slide function */}

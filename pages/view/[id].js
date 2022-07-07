@@ -58,7 +58,45 @@ style={{
 >
 <div className="flex justify-center items-center">
 <div className="float-root">
-<div className=" space-x-20 float-right">
+              <div className="md:float-left ">
+              <h1 className=" text-blue-400 text-3xl font-weight-800 text-center">About</h1>
+              <div>
+                          { profiles.map((profile) => (
+                              <div > 
+                                     <div className="flex flex-col space-y-4 bg-white rounded-xl mt-10 ">                       <div className="">
+                                                                <div className="child"><img className="" src="/images/work4.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.work}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/study1.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.study}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/college.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.college}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/location.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.currentlocation}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/location.png" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.permanentlocation}</div>
+                                                              </div>
+                                                              <div className="">
+                                                                <div className="child"><img className="" src="/images/join.svg" width={30} height={30}/></div> 
+                                                                <div className="child">: {profile.join}</div>
+                                                              </div>
+                                                                 
+                                                                 
+                                                                
+                                                              </div>
+                    
+                     </div>
+                              ))}   
+              </div>
+              </div>
+              <div className=" md:space-x-20 md:float-right">
                                   <h1 className=" text-blue-400 text-3xl font-weight-800 text-center">Posts</h1>
                                  
             { posts.map((post) => (
@@ -97,45 +135,6 @@ style={{
              ))}
                  
                             </div>
-
-              <div className="float-left ">
-              <h1 className=" text-blue-400 text-3xl font-weight-800 text-center">About</h1>
-              <div>
-                          { profiles.map((profile) => (
-                              <div > 
-                                     <div className="flex flex-col space-y-4 bg-white rounded-xl mt-10 ">                       <div className="">
-                                                                <div className="child"><img className="" src="/images/work4.png" width={30} height={30}/></div> 
-                                                                <div className="child">: {profile.work}</div>
-                                                              </div>
-                                                              <div className="">
-                                                                <div className="child"><img className="" src="/images/study1.png" width={30} height={30}/></div> 
-                                                                <div className="child">: {profile.study}</div>
-                                                              </div>
-                                                              <div className="">
-                                                                <div className="child"><img className="" src="/images/college.png" width={30} height={30}/></div> 
-                                                                <div className="child">: {profile.college}</div>
-                                                              </div>
-                                                              <div className="">
-                                                                <div className="child"><img className="" src="/images/location.png" width={30} height={30}/></div> 
-                                                                <div className="child">: {profile.currentlocation}</div>
-                                                              </div>
-                                                              <div className="">
-                                                                <div className="child"><img className="" src="/images/location.png" width={30} height={30}/></div> 
-                                                                <div className="child">: {profile.permanentlocation}</div>
-                                                              </div>
-                                                              <div className="">
-                                                                <div className="child"><img className="" src="/images/join.svg" width={30} height={30}/></div> 
-                                                                <div className="child">: {profile.join}</div>
-                                                              </div>
-                                                                 
-                                                                 
-                                                                
-                                                              </div>
-                    
-                     </div>
-                              ))}   
-              </div>
-              </div>
 </div>
 </div>
 </div>
