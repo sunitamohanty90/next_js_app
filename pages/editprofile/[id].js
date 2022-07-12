@@ -59,23 +59,23 @@ const Addabout = () => {
                    
                      <div className="flex flex-col p-4 rounded-xl">
                           <label for="text">Work</label>
-                          <textarea  className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="work" placeholder="work.." onChange={event => setWork(event.target.value)} ></textarea>
+                          <textarea  className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="work" placeholder="work.." required onChange={event => setWork(event.target.value)} ></textarea>
                           
                           <label for="text">Study</label>
-                          <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="study" placeholder="Study.." onChange={event => setStudy(event.target.value)} ></textarea>
+                          <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="study" placeholder="Study.." required onChange={event => setStudy(event.target.value)} ></textarea>
          
                           <label for="text">College</label>
-                          <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="college" placeholder="College.." onChange={event => setCollege(event.target.value)} ></textarea>
+                          <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="college" placeholder="College.." required onChange={event => setCollege(event.target.value)} ></textarea>
                           
                           <label for="text">Current location</label>
-                          <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="currentlocation" placeholder="College.." onChange={event => setCurrentlocation(event.target.value)}></textarea>
+                          <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="currentlocation" placeholder="College.." required onChange={event => setCurrentlocation(event.target.value)}></textarea>
                          
                           <label for="text">permanentlocation</label>
-                          <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="permanentlocation" placeholder="College.." onChange={event => setPermanentlocation(event.target.value)}></textarea>
+                          <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="permanentlocation" placeholder="College.." required onChange={event => setPermanentlocation(event.target.value)}></textarea>
                           
          
                           <label for="text">Join</label>
-                          <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="date" id="birthday" name="join" onChange={event => setJoin(event.target.value)}/>
+                          <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="date" id="birthday" name="join" required onChange={event => setJoin(event.target.value)}/>
                           
          
                           <button className=" bg-blue-600 hover:bg-blue-700 text-white my-2 py-1 rounded-xl w-72" type="submit">Update</button>

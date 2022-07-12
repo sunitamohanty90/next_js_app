@@ -7,18 +7,24 @@ import axios from "axios";
 export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errormsg, seterror] = useState('')
+
     const router = useRouter();
 
     const submit =async event => {
         event.preventDefault()
 
-       
-      const response = await axios.post('http://localhost/api/login',
+       try {
+        const response = await axios.post('http://localhost/api/login',
         {
              email,password
-        });
-        
-        //
+        })
+        // }).then((e)=>{
+        //     console.log(e);
+        // }).catch((e)=>{
+        //     console.log(e);
+        // });
+    
         console.log(response);
         console.log(response.data.token);
         console.log(response.data.user.email);
@@ -28,6 +34,19 @@ export default function Login(){
         
         axios.defaults.headers.common['Authorization'] = 'Bearer'+' '+ localStorage.getItem('token');
         await router.push('/home');
+           
+       } catch (error) {
+           console.log(error.message);
+        //    if (res.status === 200) {
+        //     const userObj = await res.json()
+        //     // set user to useSWR state
+        //     mutate(userObj)
+        //   } else {
+            seterror('Incorrect username or password. Try better!')
+        //   }
+           
+       }
+      
     }
     
     return(
@@ -43,23 +62,29 @@ export default function Login(){
                 <div className="flex justify-center contents-center  ">
             
             <div className="info flex justify-center flex-col">
+           
             <form onSubmit={submit} >
                <div className="">
-                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter email" name="email" onChange={event => setEmail(event.target.value)}/>
+                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter email" name="email" required onChange={event => setEmail(event.target.value)}/>
                </div>
             
                <div className="">
                    
-                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="password" placeholder="Enter password" name="password" onChange={event => setPassword(event.target.value)}/>
+                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="password" placeholder="Enter password" name="password" required onChange={event => setPassword(event.target.value)}/>
+               </div>
+               <div>
+               {errormsg && <p className="error text-white my-2 py-1 rounded-xl w-72 text-center">{errormsg}</p>}
                </div>
                <div>
                    <button className=" bg-blue-600 hover:bg-blue-700 text-white my-2 py-1 rounded-xl w-72 " type="submit" >Login</button>
+                   
                 </div>
   
                 <div className="flex justify-center items-center">
                     <Link href={"/register"}><a className="bg-green-600 hover:bg-green-700 text-white my-2 py-1 rounded-xl w-72 text-center" >create an account</a></Link>
                 </div>
              </form >
+            
             </div>
 
         </div>

@@ -73,10 +73,10 @@ const Editpost = () => {
             
             <div className="info flex justify-center flex-col">
             <label for="title">Title</label>
-                 <input  className="px-4 h-8 my-2 border border-1 border-gray-300 rounded-xl" type="text" name="title" placeholder="Title.." onChange={event => setTitle(event.target.value)} />
+                 <input  className="px-4 h-8 my-2 border border-1 border-gray-300 rounded-xl" type="text" name="title" placeholder="Title.." required onChange={event => setTitle(event.target.value)} />
                  
                  <label for="text">Text</label>
-                 <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="text" placeholder="Description.." onChange={event => setText(event.target.value)} ></textarea>
+                 <textarea className="px-4 h-32 my-2 border border-1 border-gray-300 rounded-xl" name="text" placeholder="Description.." required onChange={event => setText(event.target.value)} ></textarea>
                  
                  <span className="mt-2 text-base leading-normal">Select a file</span>
                  <input type="file" name="image"  onChange={ImageUpdate}/>

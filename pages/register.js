@@ -13,17 +13,25 @@ const Register = () => {
     const [birthday, setBirthday] = useState("");
     const [gender, setGender] = useState("");
     const [password, setPassword] = useState("");
+    const [errormsg, seterror] = useState('')
+
     const router = useRouter();
 
     const submit =async event => {
         event.preventDefault()
 
-        
-        await axios.post('http://localhost/api/register',
+        try {
+
+          const response1 =  await axios.post('http://localhost/api/register',
         {
             firstname,lastname, email,birthday,gender,password
         });
         await router.push('/');
+        } catch (error) {
+            console.log(error.message);
+            seterror('Email must be a valid email!')
+        }
+        
     }
     return(
         <div className=""
@@ -40,18 +48,21 @@ const Register = () => {
             
             <div className="info flex justify-center flex-col">
                <div className="">
-                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter firstname" name="firstname" onChange={event => setFirstName(event.target.value)}/>
+                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter firstname" name="firstname"  required onChange={event => setFirstName(event.target.value)}/>
                </div>
 
                <div className="">
-                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter lastname" name="lastname" onChange={event => setLastName(event.target.value)}/>
+                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter lastname" name="lastname" required onChange={event => setLastName(event.target.value)}/>
                </div>
 
                <div className="">
-                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter email" name="email" onChange={event => setEmail(event.target.value)}/>
+                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter email" name="email" required onChange={event => setEmail(event.target.value)}/>
+               </div>
+               <div>
+               {errormsg && <p className="error text-white my-2 py-1 rounded-xl w-72 text-center">{errormsg}</p>}
                </div>
                <div className="">
-                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="date" placeholder="Enter birthday" name="birthday" onChange={event => setBirthday(event.target.value)}/>
+                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="date" placeholder="Enter birthday" name="birthday" required onChange={event => setBirthday(event.target.value)}/>
                </div>
                <div className="">
                     <input type="radio" name="gender" value="male" onChange={event => setGender(event.target.value)}/> 
@@ -63,7 +74,7 @@ const Register = () => {
                </div>
                <div className="">
                    
-                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="password" placeholder="Enter password" name="password" onChange={event => setPassword(event.target.value)}/>
+                   <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="password" placeholder="Enter password" name="password" required onChange={event => setPassword(event.target.value)}/>
                </div>
                <div>
                    <button class=" bg-blue-600 hover:bg-blue-700 text-white my-2 py-1 rounded-xl w-72 " type="submit" >sign up</button>
