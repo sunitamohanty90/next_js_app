@@ -40,7 +40,7 @@ export default function AllPosts({data,orig}) {
                       query: { id: post.user_id },}}>
                           <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
                </Link> 
-                  :<Link href={{pathname: '/view/[id]',
+                  :<Link href={{pathname: '/ViewProfile/[id]',
                        query: { id: post.user_id },}}>
                            <span className="text-orange-600 text-xl hover:text-orange-800">{post.email} ,</span>
                </Link> }
@@ -62,7 +62,7 @@ export default function AllPosts({data,orig}) {
                         <button className="dropbtn  absolute inset-x-0 bottom-0 ">...</button>
                         <div className="dropdown-content absolute inset-x-0 bottom-0">
                          
-                         <Link href={{pathname: '/editpost/[id]',
+                         <Link href={{pathname: '/EditPost/[id]',
                               query: { id: post.id },}}><a className="text-blue-500 hover:text-black ">Edit</a></Link>
                           
                           

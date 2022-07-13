@@ -42,7 +42,7 @@ export default function Profile({ data }) {
               <div className="child">: {profile.join}</div>
             </div>
             <Link href={{
-              pathname: '/editprofile/[id]',
+              pathname: '/EditProfile/[id]',
               query: { id: profile.id },
             }}><a className="bg-blue-500 hover:bg-blue-700 text-white my-2 py-2 rounded-xl text-sm text-center">Edit Details</a></Link>
 
