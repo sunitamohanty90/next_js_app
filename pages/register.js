@@ -13,7 +13,7 @@ const Register = () => {
     const [birthday, setBirthday] = useState("");
     const [gender, setGender] = useState("");
     const [password, setPassword] = useState("");
-    const [errormsg, seterror] = useState('')
+   
 
     const router = useRouter();
 
@@ -28,8 +28,10 @@ const Register = () => {
         });
         await router.push('/');
         } catch (error) {
+            console.log(error.response.data.message);
             console.log(error.message);
-            seterror('Email must be a valid email!')
+            alert(error.message)
+            alert(error.response.data.message);
         }
         
     }
@@ -58,9 +60,7 @@ const Register = () => {
                <div className="">
                    <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="text" placeholder="Enter email" name="email" required onChange={event => setEmail(event.target.value)}/>
                </div>
-               <div>
-               {errormsg && <p className="error text-white my-2 py-1 rounded-xl w-72 text-center">{errormsg}</p>}
-               </div>
+               
                <div className="">
                    <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="date" placeholder="Enter birthday" name="birthday" required onChange={event => setBirthday(event.target.value)}/>
                </div>
@@ -95,8 +95,3 @@ const Register = () => {
     )
 }
 export default Register;
-// function Reg(){
-//     return(
-        
-//     )
-// }

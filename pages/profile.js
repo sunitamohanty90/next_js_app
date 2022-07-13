@@ -1,11 +1,66 @@
 import Link from "next/link"
-import React from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import {useRouter} from "next/router";
+import Navbar from "../components/navbar";
+import Posts from '../components/Posts';
+import Profile from '../components/Profile';
 
-import ProfileNavbar from "../components/ProfileNavbar";
-import PostById from '../components/PostById';
-import ProfileById from '../components/ProfileById';
+export default function profile() {
+  const router = useRouter()
 
-export default function Profile() {
+  const [posts, setPosts] = useState([]);
+  const [profiles, setProfiles] = useState([]);
+  
+  
+//loggedin user posts
+       const fetchData = async () => {
+         try {
+           const response1 = await axios.get(`http://localhost/api/loginuser/${localStorage.getItem('id')}`,{
+           headers: {
+               Authorization: 'Bearer' + ' ' + localStorage.getItem('token')
+               }
+         });
+         
+         console.log(response1.data);
+         
+         setPosts(response1.data);
+         
+           
+         } catch (error) {
+           console.log(error);
+         
+          alert(error.message);
+           
+         }
+         
+         
+       };
+      //loggedin user profile
+      const fetchAbout = async () => {
+         try {
+          const response2 = await axios.get(`http://localhost/api/loginprofile/${localStorage.getItem('id')}`,{
+              headers: {
+                  Authorization: 'Bearer' + ' ' + localStorage.getItem('token')
+                  }
+            });
+            console.log(response2.data);
+            setProfiles(response2.data);
+         } catch (error) {
+             console.log(error.message);
+           
+            alert(error.message)
+         }
+          
+        };
+
+      useEffect(() => { 
+              fetchData();
+              fetchAbout();
+            
+      }, []);
+      const orig = 'http://localhost/images/'
+  
     
     return (
     <div className=""
@@ -14,7 +69,7 @@ export default function Profile() {
          
         }}>
         
-            <ProfileNavbar />
+            <Navbar />
         
             <div className="container mx-auto md:px-20">
                <div className="image flex justify-center contents-center">
@@ -45,13 +100,21 @@ export default function Profile() {
                             <div className=" md:space-x-20  md:float-right">
                                   <h1 className=" text-blue-600 text-3xl font-weight-800 text-center">Posts</h1>
                                   <section className='flex flex-col-reverse'>  
-                                  <PostById />  
+                                  <Posts data={posts} orig={orig}/>  
                                  
                                  </section>         
                             </div>
                             <div className="md:float-left p-4">
-                              <ProfileById />
-                                      
+                            <h1 className=" text-blue-600 text-3xl font-weight-800 text-center">About</h1>
+                                   <div className="bg-white md:w-96  p-2 rounded-xl mt-8">
+                                          <div>
+                                              <h1 className="text-center text-blue-700">Intro</h1>
+                                          </div>
+                                         
+                          
+                              <Profile data={profiles} />
+                              </div>
+                   
                              </div>
                         </div>
                     </div>

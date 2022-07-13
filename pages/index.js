@@ -7,7 +7,7 @@ import axios from "axios";
 export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errormsg, seterror] = useState('')
+   
 
     const router = useRouter();
 
@@ -19,11 +19,7 @@ export default function Login(){
         {
              email,password
         })
-        // }).then((e)=>{
-        //     console.log(e);
-        // }).catch((e)=>{
-        //     console.log(e);
-        // });
+        
     
         console.log(response);
         console.log(response.data.token);
@@ -36,15 +32,9 @@ export default function Login(){
         await router.push('/home');
            
        } catch (error) {
-           console.log(error.message);
-        //    if (res.status === 200) {
-        //     const userObj = await res.json()
-        //     // set user to useSWR state
-        //     mutate(userObj)
-        //   } else {
-            seterror('Incorrect username or password. Try better!')
-        //   }
-           
+        // alert(error.data);
+           alert(error.message)
+           alert('Incorrect Username Or Password !')
        }
       
     }
@@ -72,9 +62,7 @@ export default function Login(){
                    
                    <input className="px-4 h-12 my-2 border border-1 border-gray-300 rounded-xl" type="password" placeholder="Enter password" name="password" required onChange={event => setPassword(event.target.value)}/>
                </div>
-               <div>
-               {errormsg && <p className="error text-white my-2 py-1 rounded-xl w-72 text-center">{errormsg}</p>}
-               </div>
+               
                <div>
                    <button className=" bg-blue-600 hover:bg-blue-700 text-white my-2 py-1 rounded-xl w-72 " type="submit" >Login</button>
                    

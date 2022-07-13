@@ -1,10 +1,45 @@
+import React, { useEffect, useState } from "react";
+import Link from 'next/link'
+import {useRouter} from "next/router";
+import axios from "axios";
 
-import React from "react";
-import Navbar from "../components/HomeNavbar";
-import AllPosts from "../components/allposts";
+import Navbar from "../components/navbar";
+import Posts from "../components/Posts";
 
 
 export default function Home() {
+    const router = useRouter();
+    
+    
+    const [posts, setPosts] = useState([]);
+    // const [errormsg, seterror] = useState('')
+    const fetchData = async () => {
+       
+     try {
+        const res = await axios.get("http://localhost/api/getposts",{
+            headers: {
+                Authorization: 'Bearer' + ' ' + localStorage.getItem('token')
+                }
+          });
+          
+          setPosts(res.data);
+       
+     } catch (error) {
+         console.log(error.message);
+        //  seterror(error.message)
+         alert(error.message);
+         
+     }
+      
+    };
+  
+    
+    useEffect(() => {
+      fetchData();
+    }, []);
+const orig = 'http://localhost/images/'
+
+
     
   return (
     <>
@@ -16,7 +51,9 @@ export default function Home() {
     >
         <Navbar />
         <section className=" mt-16 flex flex-col-reverse">
-            <AllPosts />
+            {/* <p className="text-red-500">{errormsg}</p> */}
+            <Posts data={posts} orig={orig}/>
+
         
          </section>
          
@@ -25,3 +62,4 @@ export default function Home() {
   )
 
 }
+
