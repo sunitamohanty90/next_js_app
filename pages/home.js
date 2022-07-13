@@ -50,7 +50,7 @@ const orig = 'http://localhost/images/'
         }}
     >
         <Navbar />
-        <section className=" mt-16 flex flex-col-reverse">
+        <section className=" mt-8 flex flex-col-reverse">
             {/* <p className="text-red-500">{errormsg}</p> */}
             <Posts data={posts} orig={orig}/>
 
