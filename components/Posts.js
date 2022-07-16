@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 import axios from "axios";
 
 
-export default function AllPosts({data,orig}) {
+export default function Posts({data,orig}) {
   const handleDelete = async deleteid =>{
     console.log(deleteid);
  try {
@@ -17,6 +17,7 @@ export default function AllPosts({data,orig}) {
  });
  } catch (error) {
    alert(error.message);
+   
  }
 
 }

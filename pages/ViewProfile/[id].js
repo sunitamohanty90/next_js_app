@@ -44,7 +44,9 @@ export default function ViewProfile() {
             console.log(response2.data);
             setProfiles(response2.data);
             } catch (error) {
+                console.log(error);
                 alert(error.message)
+                alert()
             }
         
           };
@@ -69,13 +71,13 @@ style={{
 <div className="flex justify-center items-center">
 <div className="float-root">
               <div className="md:float-left ">
-              <h1 className=" text-blue-400 text-3xl font-weight-800 text-center">About</h1>
-              <div className="flex flex-col space-y-4 bg-white rounded-xl mt-10">
+              <h1 className=" text-blue-400 text-3xl font-weight-800 text-center mt-10">About</h1>
+              <div className="flex flex-col space-y-4 bg-white rounded-xl mt-10 p-4">
                           <Profile data={profiles}/>
               </div>
               </div>
               <div className=" md:space-x-20 md:float-right">
-                                  <h1 className=" text-blue-400 text-3xl font-weight-800 text-center">Posts</h1>
+                                  <h1 className=" text-blue-400 text-3xl font-weight-800 text-center mt-10">Posts</h1>
                  <Post data={posts} orig={orig}/>                
            
                  
